@@ -2,6 +2,7 @@
 using Projeto_APOO.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,12 +31,45 @@ namespace Projeto_APOO.Controllers
             return RedirectToAction("Index");
         }
 
+
         public ActionResult Delete(long id)
         {
             Item_Tema I = Item_Tema.NomeTabela.Find(id);
             return View(I);
         }
 
+        [HttpPost]
+        public ActionResult Delete(Item_Tema I)
+        {
+            Item_Tema i = Item_Tema.NomeTabela.Find(I.Item_temaId);
+            Item_Tema.NomeTabela.Remove(i);
+            Item_Tema.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Edit(long id)
+        {
+            Item_Tema I = Item_Tema.NomeTabela.Find(id);
+            return View(I);
+              
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Item_Tema I)
+        {
+            Item_Tema.Entry(I).State = EntityState.Modified;
+            Item_Tema.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
+
+        public ActionResult Details(long id)
+        {
+            Item_Tema I = Item_Tema.NomeTabela.Find(id);
+            return View(I);
+        }
 
 
     }
