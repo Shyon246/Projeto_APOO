@@ -37,7 +37,7 @@
 
         @using (Html.BeginForm())
         {
-            @Html.AntiForgeryToken()
+          
             @Html.HiddenFor(Model => Model.Nome)
             @Html.HiddenFor(Model => Model.Descricao)
             @Html.HiddenFor(Model => Model.Item_temaId)

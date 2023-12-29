@@ -1,4 +1,4 @@
-﻿using Projeto_APOO.Context;
+﻿
 using Projeto_APOO.Models;
 using Projeto_APOO.Service;
 using System;
@@ -13,7 +13,6 @@ namespace Projeto_APOO.Controllers
     public class ItemController : Controller
     {
         // GET: Item
-        EFContext Item_Tema = new EFContext();
 
         Item_Service Service = new Item_Service();
         public ActionResult Index()
@@ -29,8 +28,7 @@ namespace Projeto_APOO.Controllers
         [HttpPost]
         public ActionResult Create(Item_Tema I)
         {
-            Item_Tema.NomeTabela.Add(I);
-            Item_Tema.SaveChanges();
+            Service.Create(I);
             return RedirectToAction("Index");
         }
 
@@ -38,23 +36,22 @@ namespace Projeto_APOO.Controllers
         public ActionResult Delete(long id)
         {
      
-            Item_Tema I = Service.View(id);
+            Item_Tema I = Service.Ver(id);
             return View(I);
         }
 
         [HttpPost]
         public ActionResult Delete(Item_Tema I)
         {
-            Item_Tema i = Service.View(I.Item_temaId); 
-            Item_Tema.NomeTabela.Remove(i);
-            Item_Tema.SaveChanges();
+            Item_Tema i = Service.Ver(I.Item_temaId); 
+            Service.Deletar(i);
             return RedirectToAction("Index");
         }
 
 
         public ActionResult Edit(long id)
         {
-            Item_Tema I = Service.View(id);
+            Item_Tema I = Service.Ver(id);
             return View(I);
               
         }
@@ -62,8 +59,7 @@ namespace Projeto_APOO.Controllers
         [HttpPost]
         public ActionResult Edit(Item_Tema I)
         {
-            Item_Tema.Entry(I).State = EntityState.Modified;
-            Item_Tema.SaveChanges();
+            Service.Edit(I);
             return RedirectToAction("Index");
 
         }
@@ -71,7 +67,7 @@ namespace Projeto_APOO.Controllers
 
         public ActionResult Details(long id)
         {
-            Item_Tema I = Service.View(id);
+            Item_Tema I = Service.Ver(id);
             return View(I);
         }
 

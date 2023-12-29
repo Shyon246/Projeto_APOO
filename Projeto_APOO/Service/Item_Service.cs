@@ -16,9 +16,21 @@ namespace Projeto_APOO.Service
             return DAL.List();
         }
 
-        public Item_Tema View(long id)
+        public Item_Tema Ver(long id)
         {
-            return DAL.View(id);
+            return DAL.Ver(id);
+        }
+        public void Deletar(Item_Tema i)
+        {
+            DAL.Deletar(i);
+        }
+        public void Edit(Item_Tema i)
+        {
+            DAL.Edit(i);
+        }
+        public void Create(Item_Tema i)
+        {
+            DAL.Create(i);
         }
     }
 
