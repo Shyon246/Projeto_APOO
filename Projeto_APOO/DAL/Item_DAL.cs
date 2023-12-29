@@ -14,5 +14,21 @@ namespace Projeto_APOO.DAL
         {
             return Item_Tema.NomeTabela.OrderBy(x => x.Item_temaId).ToList();
         }
+
+
+        public Item_Tema View(long id)
+        {
+            Item_Tema i = Item_Tema.NomeTabela.Find(id);
+            return i;
+        
+        }
+
+        public void Deletar(long id)
+        {
+
+        }
+
+
+        
     }
 }

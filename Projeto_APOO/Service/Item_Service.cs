@@ -15,5 +15,17 @@ namespace Projeto_APOO.Service
         {
             return DAL.List();
         }
+
+        public Item_Tema View(long id)
+        {
+            return DAL.View(id);
+        }
     }
+
+
+
+    
+
+    
+
 }

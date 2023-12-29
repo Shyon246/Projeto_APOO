@@ -37,14 +37,15 @@ namespace Projeto_APOO.Controllers
 
         public ActionResult Delete(long id)
         {
-            Item_Tema I = Item_Tema.NomeTabela.Find(id);
+     
+            Item_Tema I = Service.View(id);
             return View(I);
         }
 
         [HttpPost]
         public ActionResult Delete(Item_Tema I)
         {
-            Item_Tema i = Item_Tema.NomeTabela.Find(I.Item_temaId);
+            Item_Tema i = Service.View(I.Item_temaId); 
             Item_Tema.NomeTabela.Remove(i);
             Item_Tema.SaveChanges();
             return RedirectToAction("Index");
@@ -53,7 +54,7 @@ namespace Projeto_APOO.Controllers
 
         public ActionResult Edit(long id)
         {
-            Item_Tema I = Item_Tema.NomeTabela.Find(id);
+            Item_Tema I = Service.View(id);
             return View(I);
               
         }
@@ -70,7 +71,7 @@ namespace Projeto_APOO.Controllers
 
         public ActionResult Details(long id)
         {
-            Item_Tema I = Item_Tema.NomeTabela.Find(id);
+            Item_Tema I = Service.View(id);
             return View(I);
         }
 
