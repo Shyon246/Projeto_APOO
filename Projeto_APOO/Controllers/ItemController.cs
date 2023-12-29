@@ -1,5 +1,6 @@
 ﻿using Projeto_APOO.Context;
 using Projeto_APOO.Models;
+using Projeto_APOO.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,9 +14,11 @@ namespace Projeto_APOO.Controllers
     {
         // GET: Item
         EFContext Item_Tema = new EFContext();
+
+        Item_Service Service = new Item_Service();
         public ActionResult Index()
         {
-            return View(Item_Tema.NomeTabela.OrderBy(x => x.Item_temaId).ToList());
+            return View(Service.List());
         }
 
         public ActionResult Create()
